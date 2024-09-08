@@ -1,2 +1,1 @@
-# hello-pytest
-Hello, Pytest!
+# Hello, pytest!
