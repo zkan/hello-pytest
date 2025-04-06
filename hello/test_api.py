@@ -23,6 +23,7 @@ def test_exclamation():
     ("--greeting Hey", "Hey, World!"),
     ("-n Kan", "Hello, Kan!"),
     ("--nam Kan", "Hello, Kan!"),
+    ("-g Hey -n Kan", "Hey, Kan!"),
 ])
 def test_greeting(arg_str, expected):
     result = hello.full_output(arg_str)
