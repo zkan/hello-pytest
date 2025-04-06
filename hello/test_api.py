@@ -1,3 +1,5 @@
+import pytest
+
 import hello
 
 
@@ -16,21 +18,19 @@ def test_exclamation():
     assert result.endswith("!")
 
 
-def test_greeting():
-    result = hello.full_output("-g Hey")
+@pytest.mark.parametrize("arg_str", [
+    "-g Hey",
+    "--greeting Hey",
+])
+def test_greeting(arg_str):
+    result = hello.full_output(arg_str)
     assert result == "Hey, World!"
 
 
-def test_greeting_long():
-    result = hello.full_output("--greeting Hey")
-    assert result == "Hey, World!"
-
-
-def test_name():
-    result = hello.full_output("-n Kan")
-    assert result == "Hello, Kan!"
-
-
-def test_name_long():
-    result = hello.full_output("--name Kan")
+@pytest.mark.parametrize("arg_str", [
+    "-n Kan",
+    "--nam Kan",
+])
+def test_name(arg_str):
+    result = hello.full_output(arg_str)
     assert result == "Hello, Kan!"
