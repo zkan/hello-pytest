@@ -1,5 +1,11 @@
+# API
+def full_output():
+    return "Hello, World!"
+
+
+# Application
 def main():
-    output = "Hello, World!"
+    output = full_output()
     print(output)
 
 
