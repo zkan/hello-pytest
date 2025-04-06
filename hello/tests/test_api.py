@@ -3,22 +3,9 @@ import pytest
 import hello
 
 
-@pytest.fixture(scope="module")
-def hello_result():
-    return hello.full_output()
-
-
 @pytest.mark.smoke
 def test_hello(hello_result):
     assert hello_result == "Hello, World!"
-
-
-def test_comma(hello_result):
-    assert "," in hello_result
-
-
-def test_exclamation(hello_result):
-    assert hello_result.endswith("!")
 
 
 def idfn(x):
