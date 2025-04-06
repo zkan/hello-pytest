@@ -18,19 +18,12 @@ def test_exclamation():
     assert result.endswith("!")
 
 
-@pytest.mark.parametrize("arg_str", [
-    "-g Hey",
-    "--greeting Hey",
+@pytest.mark.parametrize("arg_str, expected", [
+    ("-g Hey", "Hey, World!"),
+    ("--greeting Hey", "Hey, World!"),
+    ("-n Kan", "Hello, Kan!"),
+    ("--nam Kan", "Hello, Kan!"),
 ])
-def test_greeting(arg_str):
+def test_greeting(arg_str, expected):
     result = hello.full_output(arg_str)
-    assert result == "Hey, World!"
-
-
-@pytest.mark.parametrize("arg_str", [
-    "-n Kan",
-    "--nam Kan",
-])
-def test_name(arg_str):
-    result = hello.full_output(arg_str)
-    assert result == "Hello, Kan!"
+    assert result == expected
