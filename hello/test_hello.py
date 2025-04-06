@@ -1,17 +1,16 @@
-def some_func():
-    return "Hello, World!"
+import hello
 
 
 def test_hello():
-    result = some_func()
+    result = hello.main()
     assert result == "Hello, World!"
 
 
 def test_comma():
-    result = some_func()
+    result = hello.main()
     assert "," in result
 
 
 def test_exclamation():
-    result = some_func()
+    result = hello.main()
     assert result.endswith("!")
