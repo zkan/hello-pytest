@@ -3,19 +3,21 @@ import pytest
 import hello
 
 
-def test_hello():
-    result = hello.full_output()
-    assert result == "Hello, World!"
+@pytest.fixture(scope="module")
+def hello_result():
+    return hello.full_output()
 
 
-def test_comma():
-    result = hello.full_output()
-    assert "," in result
+def test_hello(hello_result):
+    assert hello_result == "Hello, World!"
 
 
-def test_exclamation():
-    result = hello.full_output()
-    assert result.endswith("!")
+def test_comma(hello_result):
+    assert "," in hello_result
+
+
+def test_exclamation(hello_result):
+    assert hello_result.endswith("!")
 
 
 def idfn(x):
