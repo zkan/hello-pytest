@@ -15,3 +15,9 @@ Run with args
 ```bash
 uv run python argv.py -g Hey -n Python
 ```
+
+Run smoke tests
+
+```bash
+uv run pytest -m smoke
+```

@@ -8,6 +8,7 @@ def hello_result():
     return hello.full_output()
 
 
+@pytest.mark.smoke
 def test_hello(hello_result):
     assert hello_result == "Hello, World!"
 
@@ -29,7 +30,7 @@ def idfn(x):
     ("--greeting Hey", "Hey, World!"),
     ("-n Kan", "Hello, Kan!"),
     ("--nam Kan", "Hello, Kan!"),
-    ("-g Hey -n Kan", "Hey, Kan!"),
+    pytest.param("-g Hey -n Kan", "Hey, Kan!", marks=pytest.mark.smoke),
 ], ids=idfn)
 def test_greeting(arg_str, expected):
     result = hello.full_output(arg_str)
